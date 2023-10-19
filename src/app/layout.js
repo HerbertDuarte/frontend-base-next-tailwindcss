@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
  
   return (
     <html lang="pt-br">
-      <body className={inter.className + " overflow-hidden"}>
+      <body className={inter.className + " overflow-x-hidden"}>
         <Layout>
           {children}
         </Layout>
