@@ -3,14 +3,14 @@
 import { HelpCircleIcon, HomeIcon, AppleIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useScreenWidth from "@/hooks/useScreenWidth";
 
 export default function Layout({ children }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const drawerW = '260'
   const { windowWidth } = useScreenWidth();
+  const drawerRef = useRef(null);
   const RouterLinks = [
     {
       name: "Home",
@@ -28,9 +28,31 @@ export default function Layout({ children }) {
       icon: () => <HelpCircleIcon />,
     },
   ];
-  function openMenu() {
+  function handleMenu() {
     setIsOpen((prev) => !prev);
   }
+
+  function closeMenu() {
+    setIsOpen(false);
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+        handleMenu();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -54,20 +76,24 @@ export default function Layout({ children }) {
             ))}
           </nav>
         ) : (
-          <>
+          <div ref={drawerRef}>
             <MenuIcon
               className="cursor-pointer"
-              onClick={openMenu}
+              onClick={handleMenu}
               strokeWidth={1.5}
             />
+
             <div
-              className={`absolute right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${ !isOpen && "translate-x-full"} w-[${drawerW}px]`}
+              className={`absolute right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${
+                !isOpen && "translate-x-full"
+              } w-[260px]`}
             >
               <nav
-                className={`flex flex-col justify-center items-center gap-2 py-4 min-w-[${drawerW}px]`}
+                className={`flex flex-col justify-center items-center gap-2 py-4 min-w-[260px]`}
               >
                 {RouterLinks.map((item, index) => (
                   <Link
+                    onClick={closeMenu}
                     className={`flex justify-center items-center gap-1 font-medium ${
                       pathname === item.path ? "text-blue-600" : ""
                     }`}
@@ -79,7 +105,7 @@ export default function Layout({ children }) {
                 ))}
               </nav>
             </div>
-          </>
+          </div>
         )}
       </header>
       <main className="min-h-flex w-full flex flex-col items-center justify-center">

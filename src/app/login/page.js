@@ -18,7 +18,7 @@ export default function Login() {
 
   return (
     <main className="p-3 min-h-flex flex justify-center items-center">
-      <Notify model={notify}  text="Submit" />
+      <Notify model={notify} theme="success" text="Submit" />
       <div className="h-fit w-full max-w-[600px] p-3 border-2 border-zinc-300 rounded-lg">
         <h1 className="text-center text-2xl font-medium">Login</h1>
         <form onSubmit={handleSubmit} className="flex flex-col items-start p-3">
