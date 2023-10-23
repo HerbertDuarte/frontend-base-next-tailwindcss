@@ -104,7 +104,6 @@ export default function Layout({ children }) {
                     }`}
                     key={index}
                     href={item.path}
-                    onClick={closeDrawer} 
                   >
                     {item.name}
                   </Link>
