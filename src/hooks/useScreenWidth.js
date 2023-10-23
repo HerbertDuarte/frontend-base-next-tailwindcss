@@ -1,6 +1,6 @@
-export default function useScreenWidth(){
+import { useState, useEffect } from "react";
 
-  const { useState, useEffect } = require("react");
+export default function useScreenWidth(){
   
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   

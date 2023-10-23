@@ -3,7 +3,8 @@
 import { HelpCircleIcon, HomeIcon, AppleIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState, useEffect } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import useScreenWidth from "@/hooks/useScreenWidth";
 
 export default function Layout({ children }) {
@@ -11,7 +12,6 @@ export default function Layout({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const { windowWidth } = useScreenWidth();
   const drawerRef = useRef(null);
-
   const RouterLinks = [
     {
       name: "Home",
@@ -29,19 +29,20 @@ export default function Layout({ children }) {
       icon: () => <HelpCircleIcon />,
     },
   ];
-  function openMenu() {
+  function handleMenu() {
     setIsOpen((prev) => !prev);
   }
 
-  // Função para fechar o drawer
-  const closeDrawer = () => {
+
+  function closeMenu() {
     setIsOpen(false);
-  };
+  }
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-        closeDrawer();
+
+        handleMenu();
       }
     }
 
@@ -82,19 +83,22 @@ export default function Layout({ children }) {
           <div ref={drawerRef}>
             <MenuIcon
               className="cursor-pointer"
-              onClick={openMenu}
+              onClick={handleMenu}
               strokeWidth={1.5}
             />
+
             <div
               className={`absolute right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${
                 !isOpen && "translate-x-full"
               } w-[260px]`}
             >
               <nav
-                className={`flex flex-col justify-center items-center gap-5 py-4 min-w-[260px]`}
+
+                className={`flex flex-col justify-center items-center gap-2 py-4 min-w-[260px]`}
               >
                 {RouterLinks.map((item, index) => (
                   <Link
+                    onClick={closeMenu}
                     className={`flex justify-center items-center gap-1 font-medium ${
                       pathname === item.path ? "text-blue-600" : ""
                     }`}

@@ -1,8 +1,8 @@
-export default function Home() {
+import HomePage from "@/components/HomePage";
+
+export default function App() {
 
   return (
-    <div>
-      Home
-    </div>
+    <HomePage/>
   );
 }
