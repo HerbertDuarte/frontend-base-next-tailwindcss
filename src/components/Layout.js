@@ -3,6 +3,7 @@
 import { HelpCircleIcon, HomeIcon, AppleIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import { useEffect, useRef, useState } from "react";
 import useScreenWidth from "@/hooks/useScreenWidth";
 
@@ -32,6 +33,7 @@ export default function Layout({ children }) {
     setIsOpen((prev) => !prev);
   }
 
+
   function closeMenu() {
     setIsOpen(false);
   }
@@ -39,6 +41,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+
         handleMenu();
       }
     }
@@ -62,7 +65,8 @@ export default function Layout({ children }) {
           App Name
         </div>
         {windowWidth > 600 ? (
-          <nav className="flex flex-row flex-nowrap justify-center items-center gap-2">
+          <nav 
+          className="flex flex-row flex-nowrap justify-center items-center gap-2">
             {RouterLinks.map((item, index) => (
               <Link
                 className={`flex justify-center items-center gap-1 font-medium ${
@@ -89,6 +93,7 @@ export default function Layout({ children }) {
               } w-[260px]`}
             >
               <nav
+
                 className={`flex flex-col justify-center items-center gap-2 py-4 min-w-[260px]`}
               >
                 {RouterLinks.map((item, index) => (
@@ -99,6 +104,7 @@ export default function Layout({ children }) {
                     }`}
                     key={index}
                     href={item.path}
+                    onClick={closeDrawer} 
                   >
                     {item.name}
                   </Link>
