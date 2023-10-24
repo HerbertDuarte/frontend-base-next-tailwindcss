@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 export default function Dialog({ model, children }) {
   const [value, setValue] = model;
   const contentRef = useRef(null);
-  const showClassRef = useRef("");
 
   useEffect(() => {
     function handleKeyDown(event) {
@@ -47,17 +46,17 @@ export default function Dialog({ model, children }) {
     >
       <div
         ref={contentRef}
-        className={`relative transition-all duration-200 scale-0 ${
+        className={`relative transition-all duration-200 scale-0 overflow-hidden ${
           value && "scale-100"
-        } max-w-[90vw] max-h-[85%] bg-white text-zinc-900 m-4 rounded-md p-1`}
+        } max-w-[90vw] max-h-[85%] bg-white text-zinc-900 m-4 rounded-md`}
       >
-        <header>
+        <header className="bg-zinc-200 w-full h-7">
           <button
             className="bg-red-400 hover:bg-red-500 p-2.5 rounded-full absolute right-1 top-1"
             onClick={() => setValue(false)}
           ></button>
         </header>
-        <div className="pt-6 p-3">{children}</div>
+        <div className="p-3">{children}</div>
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ export default function Layout({ children }) {
         </div>
         {windowWidth > 600 ? (
           <nav 
-          className="flex flex-row flex-nowrap justify-center items-center gap-2">
+          className="flex flex-row flex-nowrap justify-center items-center gap-4 mx-3">
             {RouterLinks.map((item, index) => (
               <Link
                 className={`flex justify-center items-center gap-1 font-medium ${

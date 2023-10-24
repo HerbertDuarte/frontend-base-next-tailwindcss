@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Notify from "@/components/Notify";
+import Button from "@/components/Button";
 
 export default function Login() {
   const [seePassword, setSeePassword] = useState(false);
@@ -12,16 +13,15 @@ export default function Login() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     notify[1](true);
   };
 
   return (
     <main className="p-3 min-h-flex flex justify-center items-center">
-      <Notify model={notify} theme="success" text="Submit" />
+      <Notify model={notify} theme="" text="Submit" />
       <div className="h-fit w-full max-w-[600px] p-3 border-2 border-zinc-300 rounded-lg">
         <h1 className="text-center text-2xl font-medium">Login</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col items-start p-3">
+        <form className="flex flex-col items-start p-3">
           <label htmlFor="email">Email</label>
           <input
             className="bg-zinc-300 p-2 rounded w-full"
@@ -40,16 +40,12 @@ export default function Login() {
           </button>
 
           <div className="flex w-full justify-end gap-3">
-            <input
-              className="p-2 rounded bg-zinc-300"
-              type="submit"
-              value="Cadastrar"
-            />
-            <input
-              className="p-2 rounded bg-zinc-300"
-              type="submit"
-              value="Entrar"
-            />
+            <Button theme="danger">
+              Registrar
+            </Button>
+            <Button theme="success" action={handleSubmit}>
+              Entrar
+            </Button>
           </div>
         </form>
       </div>
