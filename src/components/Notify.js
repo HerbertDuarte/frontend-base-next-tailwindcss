@@ -42,11 +42,11 @@ export default function Notify({ model, text, theme, timeout }) {
     <>
       {text && (
         <div
-          className={`fixed transition-transform transform top-4 flex items-center justify-center px-4 py-2 rounded-md ${themeClass} ${textColor} transition-transform transform ${
+          className={`fixed transition-transform transform m-3 top-4 flex items-center justify-center px-4 py-2 rounded-md max-w-2xl ${themeClass} ${textColor} transition-transform transform ${
             !notify && "translate-y-[-140%]"
           }`}
         >
-          {icon && <div className="mr-2">{icon()}</div>}
+          {icon && <div className="mr-4">{icon()}</div>}
           <div>{text}</div>
         </div>
       )}

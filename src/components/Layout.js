@@ -69,7 +69,7 @@ export default function Layout({ children }) {
           className="flex flex-row flex-nowrap justify-center items-center gap-4 mx-3">
             {RouterLinks.map((item, index) => (
               <Link
-                className={`flex justify-center items-center gap-1 font-medium ${
+                className={`flex justify-center items-center gap-1 ${
                   pathname === item.path ? "text-blue-600" : ""
                 }`}
                 key={index}
@@ -88,7 +88,7 @@ export default function Layout({ children }) {
             />
 
             <div
-              className={`absolute right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${
+              className={`absolute z-50 right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${
                 !isOpen && "translate-x-full"
               } w-[260px]`}
             >
@@ -99,8 +99,8 @@ export default function Layout({ children }) {
                 {RouterLinks.map((item, index) => (
                   <Link
                     onClick={closeMenu}
-                    className={`flex justify-center items-center gap-1 font-medium ${
-                      pathname === item.path ? "text-blue-600" : ""
+                    className={`flex justify-center items-center gap-1 ${
+                      pathname === item.path ? "text-blue-600" : "text-zinc-800"
                     }`}
                     key={index}
                     href={item.path}
