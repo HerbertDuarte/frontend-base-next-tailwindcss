@@ -16,7 +16,7 @@ export default function Button({ theme, action, children }) {
       break;
 
     case "secondary":
-      classButton = "bg-blue-300 text-blue-950/90";
+      classButton = "bg-blue-400 text-white";
       break;
     case "danger":
       classButton = "bg-red-300 text-red-950/90";

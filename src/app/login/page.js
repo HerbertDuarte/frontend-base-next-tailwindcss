@@ -19,7 +19,7 @@ export default function Login() {
 
   return (
     <main className="p-3 min-h-flex flex justify-center items-center">
-      <Notify model={notify} theme="" text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fugiat eum voluptates eius minima cupiditate, placeat laborum, accusantium temporibus dolorum voluptate consequatur voluptatem recusandae repellat ea quisquam nihil quasi incidunt." />
+      <Notify model={notify} theme="" text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus fugiat eum voluptates eius minima cupiditate." />
       <div className="h-fit w-full max-w-[600px] p-3 border-2 border-zinc-300 rounded-lg">
         <h1 className="text-center text-2xl font-medium">Login</h1>
         <form className="flex flex-col items-start p-3">
