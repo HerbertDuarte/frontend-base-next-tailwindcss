@@ -14,7 +14,6 @@ export default function Button({ theme, action, children }) {
     case "primary":
       classButton = "bg-zinc-300";
       break;
-
     case "secondary":
       classButton = "bg-blue-400 text-white";
       break;
