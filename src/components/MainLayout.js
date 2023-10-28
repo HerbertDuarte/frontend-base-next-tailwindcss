@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircleIcon, HomeIcon, AppleIcon, MenuIcon } from "lucide-react";
+import { HelpCircleIcon, HomeIcon, FlameIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -61,7 +61,7 @@ export default function Layout({ children }) {
     <>
       <header className="bg-zinc-300 w-full flex justify-between p-3">
         <div className="flex gap-2 flex-nowrap">
-          <AppleIcon />
+          <FlameIcon />
           App Name
         </div>
         {windowWidth > 600 ? (

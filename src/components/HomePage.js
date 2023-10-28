@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Dialog from "./Dialog";
 import Button from "./Button";
+import { LucideIceCream } from "lucide-react";
 
 export default function HomePage() {
   const dialog = useState(false);
@@ -25,8 +26,8 @@ export default function HomePage() {
           </div>
         </div>
       </Dialog>
-      <Button theme="secondary" action={openDialog}>
-        Click me
+      <Button theme="secondary" dense action={openDialog}>
+        <LucideIceCream strokeWidth={1.4}/>
       </Button> 
     </>
   );
