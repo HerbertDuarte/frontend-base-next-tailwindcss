@@ -1,7 +1,14 @@
-import { AlertCircleIcon, Bell, BellIcon, CheckCircleIcon, XIcon } from "lucide-react";
-import React, { useEffect } from "react";
+import { AlertCircleIcon, BellIcon, CheckCircleIcon, XIcon } from "lucide-react";
+import React, { useEffect,Dispatch,SetStateAction } from "react";
 
-export default function Notify({ model, text, theme, timeout }) {
+interface NotifyProps {
+  model: [boolean, Dispatch<SetStateAction<boolean>>];
+  text: string;
+  theme?: "success" | "danger" | "warning" | "info";
+  timeout?: number;
+}
+
+export default function Notify({ model, text ='', theme, timeout } : NotifyProps) {
   let themeClass;
   let textColor;
   let icon
@@ -39,17 +46,17 @@ export default function Notify({ model, text, theme, timeout }) {
   }
 
   return (
-    <>
+    <div>
       {text && (
         <div
-          className={`fixed transition-transform transform m-3 top-4 flex items-center justify-center px-4 py-2 rounded-md max-w-2xl ${themeClass} ${textColor} transition-transform transform ${
-            !notify && "translate-y-[-200%]"
-          }`}
+          className={`fixed max-w-[95%] sm:max-w-[90%] md:max-w-2xl z-50 transition-transform transform top-4 right-[50%] translate-x-[50%] flex flex-nowrap items-center justify-center px-4 py-2 rounded-md ${themeClass} ${textColor} transition-transform transform ${!notify && "translate-y-[-200%]"}`}
         >
           {icon && <div className="mr-4">{icon()}</div>}
-          <div>{text}</div>
+          <p className="w-max">
+            {text}
+          </p>
         </div>
       )}
-    </>
+    </div>
   );
 }

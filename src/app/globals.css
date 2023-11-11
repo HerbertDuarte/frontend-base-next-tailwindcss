@@ -4,4 +4,6 @@
 
 main{
   width: 100%;
+  min-height: calc(100vh - 3rem);
+  padding-top: 3rem;
 }

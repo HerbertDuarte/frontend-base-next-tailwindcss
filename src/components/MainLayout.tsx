@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import useScreenWidth from "@/hooks/useScreenWidth";
 
-export default function Layout({ children }) {
+export default function Layout({ children } : { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const { windowWidth } = useScreenWidth();
@@ -24,8 +24,8 @@ export default function Layout({ children }) {
       icon: () => <HelpCircleIcon />,
     },
     {
-      name: "Login",
-      path: "/login",
+      name: "Logout",
+      path: "/logout",
       icon: () => <HelpCircleIcon />,
     },
   ];
@@ -39,9 +39,8 @@ export default function Layout({ children }) {
   }
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    function handleClickOutside(event : any) {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
-
         handleMenu();
       }
     }
@@ -59,7 +58,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <header className="bg-zinc-300 w-full flex justify-between p-3">
+      <header className="z-40 fixed text-white top-0 bg-primary w-full flex justify-between p-3">
         <div className="flex gap-2 flex-nowrap">
           <FlameIcon />
           App Name
@@ -88,7 +87,7 @@ export default function Layout({ children }) {
             />
 
             <div
-              className={`absolute z-50 right-0 top-12 min-h-flex bg-zinc-300 transition-transform transform ${
+              className={`absolute z-50 right-0 top-12 min-h-flex bg-primary transition-transform transform h-screen ${
                 !isOpen && "translate-x-full"
               } w-[260px]`}
             >
@@ -100,7 +99,7 @@ export default function Layout({ children }) {
                   <Link
                     onClick={closeMenu}
                     className={`flex justify-center items-center gap-1 ${
-                      pathname === item.path ? "text-blue-600" : "text-zinc-800"
+                      pathname === item.path ? "text-blue-300" : "text-white"
                     }`}
                     key={index}
                     href={item.path}

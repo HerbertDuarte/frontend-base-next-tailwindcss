@@ -1,14 +1,22 @@
 import React from "react";
 
-export default function Button({ theme, action, flat, dense, children }) {
+interface ButtonProps {
+  theme: "primary" | "secondary" | "danger" | "success" | "warning";
+  action?: () => void;
+  flat?: boolean;
+  dense?: boolean;
+  children: React.ReactNode;
+  submit? : boolean
+}
+export default function FormButton({
+  theme,
+  action,
+  flat,
+  dense,
+  children,
+  submit = false
+}: ButtonProps) {
   let classButton;
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (action) {
-      action();
-    }
-  };
 
   if (flat) {
     switch (theme) {
@@ -53,16 +61,26 @@ export default function Button({ theme, action, flat, dense, children }) {
         break;
     }
   }
-  
-  if(dense){
-    classButton += " p-1"
-  }else{
-    classButton += " py-2 px-3"
+
+  if (dense) {
+    classButton += " p-1";
+  } else {
+    classButton += " py-2 px-3";
   }
 
-  return (
-    <button className={`${classButton} rounded`} onClick={handleClick}>
-      {children}
-    </button>
+  return submit ?(
+    
+    <input
+      value={String(children)}
+      type="submit"
+      className={`${classButton} rounded cursor-pointer`}
+    />
+  ) :(
+    <input
+      value={String(children)}
+      type="button"
+      className={`${classButton} rounded cursor-pointer`}
+      onClick={action}
+    />
   );
 }

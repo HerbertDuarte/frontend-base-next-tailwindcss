@@ -1,12 +1,16 @@
-import { XIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
 
-export default function Dialog({ model, children }) {
+interface Props {
+  model: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+  children: React.ReactNode;
+}
+
+export default function Dialog({ model, children } : Props) {
   const [value, setValue] = model;
   const contentRef = useRef(null);
 
   useEffect(() => {
-    function handleKeyDown(event) {
+    function handleKeyDown(event : any) {
       if (event.key === "Escape") {
         setValue(false);
       }
@@ -24,7 +28,7 @@ export default function Dialog({ model, children }) {
   }, [setValue, value]);
 
   useEffect(() => {
-    function handleClickOutside(event) {
+    function handleClickOutside(event : any) {
       if (contentRef.current && !contentRef.current.contains(event.target)) {
         setValue(false);
       }
@@ -42,7 +46,7 @@ export default function Dialog({ model, children }) {
   }, [contentRef, setValue, value]);
   return (
     <div
-      className={`transition-colors ${value ? "bg-black/50 pointer-events-auto" : "pointer-events-none"} w-screen h-screen fixed flex justify-center items-center top-0 left-0 right-0 bottom-0 `}
+      className={`transition-colors z-40 ${value ? "bg-black/50 pointer-events-auto" : "pointer-events-none"} w-screen h-screen fixed flex justify-center items-center top-0 left-0 right-0 bottom-0 `}
     >
       <div
         ref={contentRef}
