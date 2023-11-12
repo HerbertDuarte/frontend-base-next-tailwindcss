@@ -21,22 +21,22 @@ export default function FormButton({
   if (flat) {
     switch (theme) {
       case "primary":
-        classButton = "bg-zinc-50";
+        classButton = "bg-primary-light text-primary";
         break;
       case "secondary":
-        classButton = "bg-blue-50 text-blue-900";
+        classButton = "bg-blue-100 text-blue-900";
         break;
       case "danger":
-        classButton = "bg-red-50 text-red-950";
+        classButton = "bg-red-100 text-red-950";
         break;
       case "success":
-        classButton = "bg-green-50 text-green-950";
+        classButton = "bg-green-100 text-green-950";
         break;
       case "warning":
-        classButton = "bg-yellow-50 text-yellow-950";
+        classButton = "bg-yellow-100 text-yellow-950";
         break;
       default:
-        classButton = "bg-zinc-50";
+        classButton = "bg-zinc-200";
         break;
     }
   } else {
@@ -61,7 +61,6 @@ export default function FormButton({
         break;
     }
   }
-
   if (dense) {
     classButton += " p-1";
   } else {
@@ -73,13 +72,13 @@ export default function FormButton({
     <input
       value={String(children)}
       type="submit"
-      className={`${classButton} rounded cursor-pointer`}
+      className={`${classButton} rounded cursor-pointer hover:opacity-90 transition-opacity`}
     />
   ) :(
     <input
       value={String(children)}
       type="button"
-      className={`${classButton} rounded cursor-pointer`}
+      className={`${classButton} rounded cursor-pointer hover:opacity-90 transition-opacity`}
       onClick={action}
     />
   );

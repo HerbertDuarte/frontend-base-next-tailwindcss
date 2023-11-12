@@ -7,7 +7,7 @@ interface Props {
 
 export default function Dialog({ model, children } : Props) {
   const [value, setValue] = model;
-  const contentRef = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleKeyDown(event : any) {

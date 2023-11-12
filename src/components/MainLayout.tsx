@@ -11,7 +11,7 @@ export default function Layout({ children } : { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const { windowWidth } = useScreenWidth();
-  const drawerRef = useRef(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
   const RouterLinks = [
     {
       name: "Home",
