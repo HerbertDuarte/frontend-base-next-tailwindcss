@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import FormButton from "./FormButton";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useAuth } from "@/contexts/authContext/AuthContext";
-import Notify from "./Notify";
+import Notify from "../assets/Notify";
 
 export default function FormLogin() {
   const { login } = useAuth();
   const [seePassword, setSeePassword] = useState(false);
-  const model = useState(false);	
+  const model = useState(false);
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -26,21 +26,20 @@ export default function FormLogin() {
   }
 
   function handleRegister() {
-    model[1](true)
+    model[1](true);
   }
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-start p-3">
       <Notify text="Register" model={model} />
       <label htmlFor="email">Usuário</label>
       <input
-
         className="bg-zinc-300 p-2 rounded w-full"
         id="email"
         type="text"
         value={form.username}
         onChange={(e) => setForm({ ...form, username: e.target.value })}
       />
-     
+
       <label htmlFor="password">Password</label>
       <div className="relative w-full">
         <input

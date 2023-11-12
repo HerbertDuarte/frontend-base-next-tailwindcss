@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps {
-  theme: "primary" | "secondary" | "danger" | "success" | "warning";
+  theme?: "primary" | "secondary" | "danger" | "success" | "warning";
   action?: () => void;
   flat?: boolean;
   dense?: boolean;
@@ -63,7 +63,7 @@ export default function Button({
         classButton = "bg-yellow-200 text-yellow-900";
         break;
       default:
-        classButton = "bg-zinc-50";
+        classButton = "bg-zinc-400";
         break;
     }
   }

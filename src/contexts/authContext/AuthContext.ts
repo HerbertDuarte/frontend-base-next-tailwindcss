@@ -3,9 +3,10 @@ import {Dispatch, createContext, useContext} from 'react'
 interface AuthContextProps {
   login: (data : {username: string, password: string}) => Promise<unknown | any>
   logout: () => void
-  user: string
-  setUser: (user: string) => void
+  user: String | any
+  setUser: (user: String | any) => void
   token : String,
+  setToken: (user: any) => void
   error : String,
   authLoading : Boolean,
   setAuthLoading : Dispatch<boolean>

@@ -5,7 +5,7 @@ export const useAxios = () => {
   const { token } = useAuth();
   if(token){
     const api = axios.create({
-      baseURL: process.env.API_URL,
+      baseURL: "http://localhost:3333",
       headers: {
         Authorization: `Bearer ${token}`,
       },

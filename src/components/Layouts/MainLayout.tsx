@@ -24,10 +24,11 @@ export default function Layout({ children } : { children: React.ReactNode }) {
       icon: () => <HelpCircleIcon />,
     },
     {
-      name: "Logout",
-      path: "/logout",
+      name: "Profile",
+      path: "/profile",
       icon: () => <HelpCircleIcon />,
     },
+    
   ];
   function handleMenu() {
     setIsOpen((prev) => !prev);
@@ -69,7 +70,7 @@ export default function Layout({ children } : { children: React.ReactNode }) {
             {RouterLinks.map((item, index) => (
               <Link
                 className={`flex justify-center items-center gap-1 ${
-                  pathname === item.path ? "text-blue-600" : ""
+                  pathname === item.path ? "text-blue-300" : ""
                 }`}
                 key={index}
                 href={item.path}
@@ -112,9 +113,9 @@ export default function Layout({ children } : { children: React.ReactNode }) {
           </div>
         )}
       </header>
-      <main className="min-h-flex w-full flex flex-col items-center justify-center">
+      <div className="pt-12">
         {children}
-      </main>
+      </div>
     </>
   );
 }
