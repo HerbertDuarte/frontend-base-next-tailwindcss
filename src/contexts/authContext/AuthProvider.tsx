@@ -92,7 +92,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       <Notify model={modelError} theme="danger" text={`${error}!`} />
-      <Notify model={exitNotificationModel} theme="danger" text={`${exitNotificationMessage}!`} />
+      <Notify model={exitNotificationModel} theme="success" text={`${exitNotificationMessage}!`} />
       {children}
     </AuthContext.Provider>
   );
