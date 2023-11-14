@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps {
-  theme: "primary" | "secondary" | "danger" | "success" | "warning";
+  theme?: "primary" | "secondary" | "danger" | "success" | "warning";
   action?: () => void;
   flat?: boolean;
   dense?: boolean;
@@ -79,7 +79,7 @@ export default function FormButton({
       value={String(children)}
       type="button"
       className={`${classButton} rounded cursor-pointer hover:opacity-90 transition-opacity`}
-      onClick={action}
+      onClick={action || (() => {}) }
     />
   );
 }

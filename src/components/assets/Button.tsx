@@ -77,7 +77,7 @@ export default function Button({
   return (
     <button
       className={`${classButton} rounded hover:opacity-90 transition-opacity`}
-      onClick={handleClick}
+      onClick={handleClick || (() => {})}
     >
       {children}
     </button>
