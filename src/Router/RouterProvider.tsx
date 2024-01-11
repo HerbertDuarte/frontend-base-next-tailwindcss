@@ -11,7 +11,9 @@ export default function RouterProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const { setUser, user , authLoading, setToken } = useAuth();
+  const { setUser, user, authLoading, setToken } = useAuth();
+  const [loading, setLoading] = React.useState<boolean>(true);
+
   useEffect(() => {
     if (localStorage.getItem("user")) {
       const dataUser = JSON.parse(localStorage.getItem("user") as string | any);
@@ -21,15 +23,10 @@ export default function RouterProvider({
       const dataToken = localStorage.getItem("token") as string | any;
       setToken(dataToken);
     }
-  }, [ authLoading, setUser, setToken]);
+    setLoading(false);
+  }, [authLoading, setUser, setToken]);
 
   return (
-    <>
-      {user ? (
-        <Layout>{children}</Layout>
-      ) : (
-        <Login />
-      )}
-    </>
+    <>{ loading ? <Loader /> :  user ? <Layout>{children}</Layout> :  <Login />}</>
   );
 }
