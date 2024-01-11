@@ -1,17 +1,18 @@
 "use client";
 
-import { ReactNode, use, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useAxios } from "@/hooks/useAxios";
 import { AuthContext } from "./AuthContext";
 import Notify from "@/components/assets/Notify";
 import { useRouter } from "next/navigation";
+import Loader from "@/components/assets/Loader";
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const api = useAxios();
 
   const [user, setUser] = useState<any>();
   const [token, setToken] = useState<string>("");
-  const [authLoading, setAuthLoading] = useState<boolean>(true);
+  const [authLoading, setAuthLoading] = useState<boolean>(false);
   const router = useRouter();
   /* MODAIS */
   const modelError = useState<boolean>(false);
@@ -29,11 +30,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await api.post("/auth/login", { username, password });
       setDataLogin(response.data);
     } catch (error: any) {
-      setError(error.response.data.message);
+      setError(error.message);
       setErrorNotify(true);
       console.error(error);
     }
     setAuthLoading(false);
+    return;
   }
 
   /* LOGOUT */
@@ -41,13 +43,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     setAuthLoading(true);
     setToken("");
     setUser(undefined);
-    setAuthLoading(false);
-
+    
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     console.log("logout");
     exitNotificationModel[1](true);
     setExitNotificationMessage("Session closed successfully");
+    setAuthLoading(false);
     router.push("/");
   }
 
@@ -93,7 +95,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     >
       <Notify model={modelError} theme="danger" text={`${error}!`} />
       <Notify model={exitNotificationModel} theme="success" text={`${exitNotificationMessage}!`} />
-      {children}
+      
+      {authLoading ? <Loader/>  : children}
     </AuthContext.Provider>
   );
 };

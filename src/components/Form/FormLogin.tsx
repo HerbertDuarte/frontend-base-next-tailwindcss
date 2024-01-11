@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import FormButton from "./FormButton";
+import FormButton from "../assets/FormButton";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useAuth } from "@/contexts/authContext/AuthContext";
 import Notify from "../assets/Notify";
@@ -22,8 +22,12 @@ export default function FormLogin() {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    login(form);
-  }
+    try {
+      login(form);
+    }catch(err){
+      console.log(err)
+    }
+    }
 
   function handleRegister() {
     model[1](true);

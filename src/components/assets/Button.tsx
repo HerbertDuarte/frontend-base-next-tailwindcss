@@ -63,7 +63,7 @@ export default function Button({
         classButton = "bg-yellow-200 text-yellow-900";
         break;
       default:
-        classButton = "bg-zinc-400";
+        classButton = "bg-zinc-200";
         break;
     }
   }

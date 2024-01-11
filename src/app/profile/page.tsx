@@ -47,18 +47,17 @@ export default function Profile() {
         </div>
       </Dialog>
       <div className="flex justify-between w-full flex-row">
-        <div className="flex justify-center items-start gap-2">
+        <div onClick={() => router.push("/profile/edit")} className="flex justify-center items-start gap-2">
           <div className="bg-zinc-400 md:p-4 p-3 flex justify-center items-center rounded-full">
-            <User2Icon fill="red"  size={45} />
+            <User2Icon size={45} />
           </div>
           <div className="py-2">
             <h1 className="md:text-2xl text-xl font-bold flex items-center gap-2">
               <span className="truncate max-w-[10ch] xs:max-w-[20ch] sm:max-w-30ch">{user.nome}</span>
               <span
-                onClick={() => router.push("/profile/edit")}
                 className="cursor-pointer"
               >
-                <Edit2Icon fill="grey" size={20} strokeWidth={3} />
+                <Edit2Icon size={20} strokeWidth={3} />
               </span>
             </h1>
             <p className="md:text-lg text-md">{user.email}</p>

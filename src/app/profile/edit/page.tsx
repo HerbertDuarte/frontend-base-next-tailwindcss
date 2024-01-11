@@ -1,10 +1,12 @@
 "use client";
 
-import FormButton from "@/components/Form/FormButton";
+import FormButton from "@/components/assets/FormButton";
 import Button from "@/components/assets/Button";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function EditProfile() {
+  const router = useRouter();
   return (
     <main className="sm:p-3 p-2">
       <h1 className="text-2xl text-center">Edit your profile</h1>
@@ -50,7 +52,7 @@ export default function EditProfile() {
           />
         </label>
         <div className="flex justify-end py-2 gap-2">
-          <Button theme="danger">Cancel</Button>
+          <Button action={()=> router.back()}>Cancel</Button>
           <FormButton theme="success">save</FormButton>
         </div>
       </form>

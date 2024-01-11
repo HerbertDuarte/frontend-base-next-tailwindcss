@@ -8,12 +8,12 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      'xs': '420px',
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      xs: "420px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
     extend: {
       backgroundImage: {
@@ -22,7 +22,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "#181892",
+        primary: "#3e3ebc",
         "primary-light": "rgb(219 234 254)",
         "primary-dark": "#3e3e9e",
         secondary: "#029393",

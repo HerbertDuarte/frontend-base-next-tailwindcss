@@ -57,7 +57,7 @@ export default function FormButton({
         classButton = "bg-yellow-200 text-yellow-900";
         break;
       default:
-        classButton = "bg-zinc-50";
+        classButton = "bg-zinc-200";
         break;
     }
   }
